@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function binSeach(arr,data) {
+        for (let i=0;i<arr.length;i++){
+            if (arr[i]==data){
+                return i;
+            }
+        }
+    }
+    function insertionSort(arr){
+        for (let i=0;i<arr.length;i++){
+            if (arr[i]<arr[i-1]){
+                [arr[i-1],arr[i]]=[arr[i],arr[i-1]];
+            }
+        }
+        return arr;
+    }
+    function count(arr,data) {
+        let count = 0;
+        let position = binSeach(arr, data);
+        if (position>-1) {
+            ++count;
+            for (let i = position - 1; i > 0; --i) {
+                if (arr[i] == data) {
+                    ++count;
+                } else {
+                    break;
+                }
+            }
+            for (let i = position + 1; i < arr.length; i++) {
+                if (arr[i] == data) {
+                    ++count;
+                } else {
+                    break;
+                }
+            }
+        } return count;
+    };
+
+    let nums=[];
+    for (let i=0;i< 10;i++){
+        nums[i]=Math.floor(Math.random()*10);
+    }
+    function dispArr(arr){
+        alert(arr);
+    }
+    dispArr(nums);
+    insertionSort(nums);
+    document.write("<br/>");
+    let val=parseInt(prompt("Nhap vao so:"));
+    let retVal=count(nums,val);
+    document.write("Found "+ retVal+ "ocurrences"+val+".");
+
+</script>
+</body>
+</html>
